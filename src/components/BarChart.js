@@ -1,4 +1,3 @@
-// BarChart.js
 import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 import '../App.css';
@@ -8,13 +7,11 @@ let data;
 const BarChart = () => {
   useEffect(() => {
 
-    // CHART INIT ------------------------------
     const margin = { top: 50, right: 30, bottom: 30, left: 40 };
     const height = 500 - margin.top - margin.bottom;
 
-    const width = 900 - margin.left - margin.right; // Adjust the width as needed
+    const width = 900 - margin.left - margin.right; 
 
-  // Chart initialization in the global scope
   const svg = d3.select('#chart-container').append('svg')
   .attr('width', width + margin.left + margin.right)
   .attr('height', height + margin.top + margin.bottom)
@@ -26,18 +23,15 @@ const BarChart = () => {
 
     svg.append('g').attr('class', 'axis y-axis');
     svg.append('g').attr('class', 'axis x-axis').attr('transform', `translate(0,${height})`);
-    svg.append('text').attr('class', 'y-axis-title').attr('transform', `translate(${-margin.left}, ${height / 2}) rotate(0)`) // Adjust the translation values as needed
-    .attr('dy', '-1em') // Adjust the vertical positioning above the graph
+    svg.append('text').attr('class', 'y-axis-title').attr('transform', `translate(${-margin.left}, ${height / 2}) rotate(0)`) 
+    .attr('dy', '-1em') 
     .style('text-anchor', 'start').style('text-anchor', 'middle');
 
-    // Initialize the 'type' and 'sortDirection' variables
     let type = document.querySelector('#group-by').value;
     let sortDirection = 'ascending';
 
 
-    // CHART UPDATE FUNCTION -------------------
     function updateChart(data, type, sortDirection) {
-      // Update scale domains
       xScale.domain(data.map(d => d.company));
       yScale.domain([0, d3.max(data, d => d[type])]);;
       // Sorting based on the selected type and direction
@@ -72,11 +66,9 @@ const BarChart = () => {
   // Dynamically update the y-axis title based on the selected type
   const yTitleText = type === 'stores' ? 'Stores worldwide' : 'Revenue in billions U.S. dollars';
   svg.select('.y-axis-title').text(yTitleText).attr('transform', `translate(${-margin.left/10 + 50}, ${margin.top - 40}) rotate(0)`) // Adjust the translation values as needed
-  .attr('dy', '-1em') // Adjust the vertical positioning above the graph
-  .style('text-anchor', 'start').style('text-anchor', 'middle');; // Adjust the translation and text as needed
+  .attr('dy', '-1em') 
+  .style('text-anchor', 'start').style('text-anchor', 'middle');
     }
-
-    // CHART UPDATES ---------------------------
 
     d3.csv('data.csv', d3.autoType).then(initialData => {
         data = initialData;
@@ -84,7 +76,7 @@ const BarChart = () => {
       });
     
 
-    // Handling the type change
+    // Handling dropdown change
     document.querySelector('#group-by').addEventListener('change', function () {
       type = this.value;
       updateChart(data, type, sortDirection);
@@ -98,10 +90,7 @@ const BarChart = () => {
   });
   document.getElementById('chart-container').appendChild(sortButton);
 
-    // Handling the sorting direction change (if needed)
-    // This is already covered by the sort button click event
-
-  }, []); // useEffect dependencies
+  }, []); 
 
   return (
     <div>
