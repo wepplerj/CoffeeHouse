@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/wepplerj.github.io/static/css/main.c7e6a6d5.css",
+    "main.js": "/wepplerj.github.io/static/js/main.d8abf358.js",
+    "index.html": "/wepplerj.github.io/index.html",
+    "main.c7e6a6d5.css.map": "/wepplerj.github.io/static/css/main.c7e6a6d5.css.map",
+    "main.d8abf358.js.map": "/wepplerj.github.io/static/js/main.d8abf358.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c7e6a6d5.css",
+    "static/js/main.d8abf358.js"
+  ]
+}
